@@ -1,9 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
+        stage('Flaky Test') {
             steps {
-                echo 'Hello World'
+                script {
+                    def roll = Math.random()
+                    if (roll < 0.4) {
+                        error("Simulated failure! Roll: ${roll}")
+                    }
+                    echo "Passed! Roll: ${roll}"
+                }
             }
         }
     }
