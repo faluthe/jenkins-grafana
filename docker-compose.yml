@@ -28,6 +28,11 @@ services:
     depends_on:
       - prometheus
 
+  pushgateway:
+    image: prom/pushgateway:latest
+    ports:
+      - "9091:9091"
+
 volumes:
   jenkins_home:
   grafana_data:
